@@ -49,10 +49,24 @@
   #gate-error { color: var(--danger); font-size: 0.85rem; }
   #gate-error:empty { display: none; }
   #content { display: none; margin-top: 8px; }
-  .level-card {
-    border: 1px solid var(--border); border-radius: 14px; padding: 20px;
-    margin-bottom: 24px; background: var(--surface);
+  .level-grid { display: flex; flex-direction: column; gap: 10px; }
+  .level-card-btn {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; text-align: left; padding: 16px 18px; border: 1px solid var(--border);
+    border-radius: 12px; background: var(--surface); color: var(--text);
+    font-family: inherit; font-size: 1rem; font-weight: 600; cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
   }
+  .level-card-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .level-card-count { font-size: 0.85rem; font-weight: 400; color: var(--muted); }
+  .level-detail { display: none; }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px; margin-bottom: 20px;
+    background: none; border: none; color: var(--accent); font-family: inherit;
+    font-size: 0.9rem; font-weight: 600; cursor: pointer; padding: 0;
+  }
+  .back-btn:hover { text-decoration: underline; }
+  .level-panel { display: none; }
   .level-title { font-size: 1.05rem; margin: 0 0 16px; letter-spacing: -0.01em; }
   section { margin-bottom: 28px; }
   section:last-child { margin-bottom: 0; }
@@ -89,8 +103,17 @@
   </div>
   </div>
   <div id="content">
-<div class="level-card"><h2 class="level-title">S1</h2><section><h3 class="term-heading">2026 &middot; Term 3</h3><div class="rows"><div class="row"><span class="row-label">S1 MATH Area and Perimeter 1 (Term 3 Week 8)</span><a class="row-link" href="https://www.youtube.com/watch?v=r-b_-q5Lr2k" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1L-540FGqHIhYIdtE6tecgYnx6mNwBZmo" target="_blank" rel="noopener">Materials</a></div></div></section></div>
-<div class="level-card"><h2 class="level-title">S3EM</h2><section><h3 class="term-heading">2026 &middot; Term 1</h3><div class="rows"><div class="row"><span class="row-label">S3EM Quadratic Equations 1 (Term 1 Dec 1)</span><a class="row-link" href="https://www.youtube.com/watch?v=ICmSISC0CK4" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1g_Z8ACc8g3SOJzDetgOevJuRykx0aq4R" target="_blank" rel="noopener">Materials</a></div>
+<div id="level-grid" class="level-grid">
+<button class="level-card-btn" data-level="S1"><span>S1</span><span class="level-card-count">1 class</span></button>
+<button class="level-card-btn" data-level="S2"><span>S2</span><span class="level-card-count">Nothing yet</span></button>
+<button class="level-card-btn" data-level="S3EM"><span>S3EM</span><span class="level-card-count">33 classes</span></button>
+<button class="level-card-btn" data-level="S3AM"><span>S3AM</span><span class="level-card-count">35 classes</span></button>
+  </div>
+  <div id="level-detail" class="level-detail">
+    <button id="back-btn" class="back-btn">&larr; All levels</button>
+<div class="level-panel" data-level="S1"><h2 class="level-title">S1</h2><section><h3 class="term-heading">2026 &middot; Term 3</h3><div class="rows"><div class="row"><span class="row-label">S1 MATH Area and Perimeter 1 (Term 3 Week 8)</span><a class="row-link" href="https://www.youtube.com/watch?v=r-b_-q5Lr2k" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1L-540FGqHIhYIdtE6tecgYnx6mNwBZmo" target="_blank" rel="noopener">Materials</a></div></div></section></div>
+<div class="level-panel" data-level="S2"><h2 class="level-title">S2</h2><p class="empty">Nothing resolved yet.</p></div>
+<div class="level-panel" data-level="S3EM"><h2 class="level-title">S3EM</h2><section><h3 class="term-heading">2026 &middot; Term 1</h3><div class="rows"><div class="row"><span class="row-label">S3EM Quadratic Equations 1 (Term 1 Dec 1)</span><a class="row-link" href="https://www.youtube.com/watch?v=ICmSISC0CK4" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1g_Z8ACc8g3SOJzDetgOevJuRykx0aq4R" target="_blank" rel="noopener">Materials</a></div>
 <div class="row"><span class="row-label">S3EM Quadratic Equations 2 (Term 1 Dec 2)</span><a class="row-link" href="https://www.youtube.com/watch?v=X7CNV6Mh17k" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1ibwm4xqZIvynlCX13K4lBdR_ZqTIwQqb" target="_blank" rel="noopener">Materials</a></div>
 <div class="row"><span class="row-label">S3EM Quadratic Graphs 1 (Term 1 Week 0)</span><a class="row-link" href="https://www.youtube.com/watch?v=uOxxsqfHBMI" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1TFiAXpX1IecIacGrGF4_gM3Qz_rZQR_-" target="_blank" rel="noopener">Materials</a></div>
 <div class="row"><span class="row-label">S3EM Quadratic Graphs 2 (Term 1 Week 1)</span><a class="row-link" href="https://www.youtube.com/watch?v=xYGiE3fJJF0" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1_Z5Kh-A_3wiLePFHeZz1at9mHhO9kCO1" target="_blank" rel="noopener">Materials</a></div>
@@ -123,7 +146,7 @@
 <div class="row"><span class="row-label">S3EM WA3 Review 3 (Term 3 Week 7)</span><a class="row-link" href="https://www.youtube.com/watch?v=VoeKov5ky3A" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1cpxyG6lzUsTV2LbKmk6QtKC20PHST9U1" target="_blank" rel="noopener">Materials</a></div>
 <div class="row"><span class="row-label">S3EM Arc Length 1 (Term 3 Week 8)</span><a class="row-link" href="https://www.youtube.com/watch?v=lFjPzM_ukDQ" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1MdVQJ7kbyswXA6UnzsLu8LHgy62bfv9o" target="_blank" rel="noopener">Materials</a></div>
 <div class="row"><span class="row-label">S3EM Arc Length 2 (Term 3 Week 9)</span><a class="row-link" href="https://www.youtube.com/watch?v=eo7D5lrsARc" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1JZKZjegRzzmAoHgs7ivnbrG_096EkNFC" target="_blank" rel="noopener">Materials</a></div></div></section></div>
-<div class="level-card"><h2 class="level-title">S3AM</h2><section><h3 class="term-heading">2026 &middot; Term 1</h3><div class="rows"><div class="row"><span class="row-label">S3AM Simultaneous Equations (Term 1 Dec 1)</span><a class="row-link" href="https://www.youtube.com/watch?v=VgiZT0oC6ho" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1WzeYlrzaxlI5xtwYWdqYVW0oJZy9x_ff" target="_blank" rel="noopener">Materials</a></div>
+<div class="level-panel" data-level="S3AM"><h2 class="level-title">S3AM</h2><section><h3 class="term-heading">2026 &middot; Term 1</h3><div class="rows"><div class="row"><span class="row-label">S3AM Simultaneous Equations (Term 1 Dec 1)</span><a class="row-link" href="https://www.youtube.com/watch?v=VgiZT0oC6ho" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1WzeYlrzaxlI5xtwYWdqYVW0oJZy9x_ff" target="_blank" rel="noopener">Materials</a></div>
 <div class="row"><span class="row-label">S3AM Quadratic Functions 1 (Term 1 Dec 2)</span><a class="row-link" href="https://www.youtube.com/watch?v=6HkxjivPRBk" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1osp0_hoSiF7KP5SSW9FTjeXgndNUboLv" target="_blank" rel="noopener">Materials</a></div>
 <div class="row"><span class="row-label">S3AM Quadratic Functions 2 (Term 1 Week 0)</span><a class="row-link" href="https://www.youtube.com/watch?v=BvW6Ta1x6zQ" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1bE7fO2B7AUW44_GX7te1-FRu8HHvQwCy" target="_blank" rel="noopener">Materials</a></div>
 <div class="row"><span class="row-label">S3AM Surds 1 (Term 1 Week 1)</span><a class="row-link" href="https://www.youtube.com/watch?v=ch0id6p51rk" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1hosu1sZTd8LphnQsX6osg1924ekzICdX" target="_blank" rel="noopener">Materials</a></div>
@@ -159,6 +182,7 @@
 <section><h3 class="term-heading">2026 &middot; Extra Classes</h3><div class="rows"><div class="row"><span class="row-label">S3AM Extra Class 1</span><a class="row-link" href="https://www.youtube.com/watch?v=ovfMMgcBoRw" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1CfnB26rDYZyXb_Q1kEoeXgAyUMIrGbsj" target="_blank" rel="noopener">Materials</a></div>
 <div class="row"><span class="row-label">S3AM Extra Class 2</span><a class="row-link" href="https://www.youtube.com/watch?v=ZzCGpv1tuJI" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1LX8ceToy0i1YfcKqhrZkVQW14ZFgFQyh" target="_blank" rel="noopener">Materials</a></div></div></section></div>
   </div>
+  </div>
 </div>
 <script>
   (function () {
@@ -180,6 +204,27 @@
     }
     btn.addEventListener('click', tryUnlock);
     input.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') tryUnlock(); });
+
+    var grid = document.getElementById('level-grid');
+    var detail = document.getElementById('level-detail');
+    var backBtn = document.getElementById('back-btn');
+    var panels = document.querySelectorAll('.level-panel');
+    document.querySelectorAll('.level-card-btn').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var level = card.getAttribute('data-level');
+        grid.style.display = 'none';
+        detail.style.display = 'block';
+        panels.forEach(function (p) {
+          p.style.display = (p.getAttribute('data-level') === level) ? 'block' : 'none';
+        });
+      });
+    });
+    if (backBtn) {
+      backBtn.addEventListener('click', function () {
+        detail.style.display = 'none';
+        grid.style.display = 'flex';
+      });
+    }
   })();
 </script>
 </body>
