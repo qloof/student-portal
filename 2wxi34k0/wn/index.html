@@ -20,11 +20,12 @@
     padding: 40px 20px;
   }
   .wrap { width: 100%; max-width: 640px; }
+  .auth { max-width: 420px; margin: 0 auto; }
   .badge { width: 40px; height: 4px; background: var(--accent); border-radius: 4px; margin: 0 0 20px; }
   h1 { font-size: 1.4rem; margin: 0 0 6px; letter-spacing: -0.01em; }
   .sub { color: var(--muted); font-size: 0.95rem; margin: 0 0 28px; line-height: 1.5; }
   #gate {
-    display: flex; flex-direction: column; gap: 14px; max-width: 420px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 14px;
     background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
     padding: 28px; box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
   }
@@ -70,6 +71,7 @@
 </head>
 <body>
 <div class="wrap">
+  <div class="auth">
   <div class="badge"></div>
   <h1>weining</h1>
   <p class="sub">Recordings &amp; materials for every lesson. Enter the password to view.</p>
@@ -77,6 +79,7 @@
     <input id="gate-input" type="password" placeholder="Password" autocomplete="off" />
     <button id="gate-btn">Unlock</button>
     <div id="gate-error"></div>
+  </div>
   </div>
   <div id="content">
 <section><h2>S3AM &middot; 2026 &middot; Term 1</h2><div class="rows"><div class="row"><span class="row-label">S3AM Simultaneous Equations (Term 1 Dec 1)</span><a class="row-link" href="https://www.youtube.com/watch?v=VgiZT0oC6ho" target="_blank" rel="noopener">Recording</a><a class="row-link" href="https://drive.google.com/drive/folders/1WzeYlrzaxlI5xtwYWdqYVW0oJZy9x_ff" target="_blank" rel="noopener">Materials</a></div>
