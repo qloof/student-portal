@@ -5,50 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S3AM Portal</title>
 <style>
+  /* Committed dark orange-on-black look (Longfen's explicit preference, 2026-09-01) --
+     not theme-adaptive on purpose, see color-scheme below. */
   :root {
-    color-scheme: light dark;
-    --bg: #faf9f7; --surface: #ffffff; --text: #1a1a1a; --muted: #6b6b6b;
-    --border: #e5e2dd; --accent: #b45309; --accent-text: #ffffff;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #171614; --surface: #211f1c; --text: #f0ede8; --muted: #a39d92;
-      --border: #38352f; --accent: #d97706; --accent-text: #1a1a1a;
-    }
+    color-scheme: dark;
+    --bg: #131210; --surface: #1c1a16; --surface-2: #262019;
+    --text: #f3ede4; --muted: #9c9284; --border: #35302a;
+    --accent: #f2960f; --accent-hover: #d9820a; --accent-text: #171310;
+    --danger: #f0644a;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 80px; }
-  h1 { font-size: 1.4rem; margin: 0 0 4px; }
-  .sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 28px; }
-  #gate { display: flex; flex-direction: column; gap: 10px; max-width: 320px; }
+  body {
+    margin: 0; min-height: 100vh; background: var(--bg); color: var(--text);
+    font-family: system-ui, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 20px;
+  }
+  .wrap { width: 100%; max-width: 640px; }
+  .badge { width: 40px; height: 4px; background: var(--accent); border-radius: 4px; margin: 0 0 20px; }
+  h1 { font-size: 1.5rem; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); font-size: 0.95rem; margin: 0 0 28px; line-height: 1.5; }
+  #gate {
+    display: flex; flex-direction: column; gap: 14px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
+  }
   #gate input {
-    padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
-    background: var(--surface); color: var(--text); font-size: 1rem;
+    padding: 13px 14px; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--surface-2); color: var(--text); font-size: 1rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  #gate input:focus {
+    outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(242, 150, 15, 0.18);
   }
   #gate button {
-    padding: 10px 12px; border: none; border-radius: 8px; background: var(--accent);
-    color: var(--accent-text); font-size: 1rem; cursor: pointer;
+    padding: 13px 14px; border: none; border-radius: 10px; background: var(--accent);
+    color: var(--accent-text); font-size: 1rem; font-weight: 600; cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
   }
-  #gate-error { color: #dc2626; font-size: 0.85rem; min-height: 1.2em; }
-  #content { display: none; }
-  section { margin-bottom: 24px; }
-  h2 { font-size: 1rem; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  #gate button:hover { background: var(--accent-hover); }
+  #gate button:active { transform: scale(0.98); }
+  #gate-error { color: var(--danger); font-size: 0.85rem; min-height: 1.2em; }
+  #content { display: none; margin-top: 8px; }
+  section { margin-bottom: 28px; }
+  h2 {
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent); margin: 0 0 12px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
   .row {
-    display: flex; align-items: center; gap: 12px; padding: 10px 0;
-    border-bottom: 1px solid var(--border); flex-wrap: wrap;
+    display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+    border-radius: 10px; flex-wrap: wrap; transition: background 0.15s;
   }
+  .row:hover { background: var(--surface); }
   .row-label { flex: 1; min-width: 160px; }
   .row-link {
-    color: var(--accent); text-decoration: none; font-size: 0.9rem;
-    border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px;
+    color: var(--text); text-decoration: none; font-size: 0.85rem;
+    border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px;
+    transition: border-color 0.15s, color 0.15s;
   }
-  .row-link:hover { border-color: var(--accent); }
+  .row-link:hover { border-color: var(--accent); color: var(--accent); }
   .empty { color: var(--muted); }
 </style>
 </head>
 <body>
 <div class="wrap">
+  <div class="badge"></div>
   <h1>S3AM Class Portal</h1>
   <p class="sub">Recordings &amp; materials for every lesson. Enter the class password to view.</p>
   <div id="gate">
