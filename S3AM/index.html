@@ -23,6 +23,7 @@
   }
   .wrap { width: 100%; max-width: 640px; }
   .auth { max-width: 420px; margin: 0 auto; }
+  .wrap.unlocked .auth { margin: 0; }
   .badge { width: 40px; height: 4px; background: var(--accent); border-radius: 4px; margin: 0 0 20px; }
   h1 { font-size: 1.4rem; margin: 0 0 6px; letter-spacing: -0.01em; }
   .sub { color: var(--muted); font-size: 0.95rem; margin: 0 0 28px; line-height: 1.5; }
@@ -129,10 +130,12 @@
     var err = document.getElementById('gate-error');
     var gate = document.getElementById('gate');
     var content = document.getElementById('content');
+    var wrap = document.querySelector('.wrap');
     function tryUnlock() {
       if (PASSWORDS.indexOf(input.value) !== -1) {
         gate.style.display = 'none';
         content.style.display = 'block';
+        wrap.classList.add('unlocked');
       } else {
         err.textContent = 'Incorrect password.';
       }
